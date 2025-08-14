@@ -1,0 +1,50 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String      @id
+  name       String?
+  email      String      @unique
+  password   String
+  phone      String?
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
+  documents  Documents[]
+
+  @@map("users")
+}
+
+model Documents {
+  id            String      @id
+  name          String?
+  voice_id      String?     @default("Thiago")
+  language_code String?     @default("pt-BR")
+  created_at    DateTime    @default(now())
+  updated_at    DateTime    @updatedAt
+  user          User        @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id       String
+  current_page  Int         @default(0)
+  total_pages   Int         @default(0)
+  audio_files   AudioFile[]
+
+  @@map("documents")
+}
+
+model AudioFile {
+  id                String    @id
+  page_number       Int       @default(0)
+  speech_marks      Json
+  audio_file_path   String
+  current_paragraph Int       @default(0)
+  document          Documents @relation(fields: [document_id], references: [id])
+  document_id       String
+
+  @@map("audio_files")
+}

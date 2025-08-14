@@ -1,0 +1,11 @@
+# Ignore everything except README.md
+# and the backend and frontend folders
+*
+!.gitignore
+!README.md
+!backend
+!backend/*
+!backend/*/**
+!frontend
+!frontend/*
+!frontend/*/**

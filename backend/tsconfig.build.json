@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"],
+			"@core/*": ["src/core/*"],
+			"@infra/*": ["src/infra/*"],
+			"@application/*": ["src/application/*"]
+		},
+		"target": "es2022",
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"noImplicitAny": false,
+		"outDir": "./dist"
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "src/tests"]
+}

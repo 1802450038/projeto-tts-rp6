@@ -1,0 +1,17 @@
+.env
+**/.env*
+!.env.example
+
+models/*
+node_modules
+dist
+src/infra/http/i18n/locales/*
+.DS_*
+prisma/dev.*
+prisma/migrations/migration_lock.toml
+
+pnpm-lock.yaml
+
+.vercel
+
+.vscode/sb_snippets.code-snippets
